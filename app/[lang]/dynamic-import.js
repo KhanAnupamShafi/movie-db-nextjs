@@ -7,10 +7,18 @@ const getAllMovies = async () => {
 
   return movies;
 };
+const getAllGenres = async (...genreIds) => {
+  const genreData = await import("../../genre.json").then(
+    (module) => module.default
+  );
+  const genres = genreIds.map((id) => genreData[id]).filter(Boolean);
+
+  return genres;
+};
 
 const getMovieById = async (id) => {
   const data = await getAllMovies();
   return data.find((Movie) => Movie.id === parseInt(id));
 };
 
-export { getAllMovies, getMovieById };
+export { getAllGenres, getAllMovies, getMovieById };

@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { getDictionary } from "../../dictionaries";
 import { getMovieById } from "../../dynamic-import";
 
 export default async function MoviePage({ params }) {
   const { id } = params;
   const movie = await getMovieById(id);
+  const dictionary = await getDictionary(params.lang);
   if (!movie) {
     notFound();
   }
@@ -33,24 +35,32 @@ export default async function MoviePage({ params }) {
             style={{ width: "100%", height: "auto" }}
           />
         </div>
-        <div className='col-span-8'>
+        <div className='col-span-7'>
           <h2 className='font-bold text-slate-300 text-2xl'>
             {movie?.original_title}
           </h2>
           <p className='my-2 text-slate-400 italic'>{movie?.overview}</p>
           <ul className='text-slate-300 space-y-2 my-8'>
-            <li>Release Date : {movie?.release_date}</li>
-            <li>Average Vote : {movie?.vote_average}</li>
-            <li>Vote Count : {movie?.vote_count}</li>
-            <li>Popularity : {movie?.popularity}</li>
+            <li>
+              {dictionary.release}: {movie?.release_date}
+            </li>
+            <li>
+              {dictionary.rating} : {movie?.vote_average}
+            </li>
+            <li>
+              {dictionary.vote} : {movie?.vote_count}
+            </li>
+            <li>
+              {dictionary.popularity} : {movie?.popularity}
+            </li>
           </ul>
         </div>
-        <div className='col-span-2 space-y-4'>
+        <div className='col-span-3 space-y-4'>
           <button className='py-2 w-full bg-primary font-medium text-slate-800 rounded-md whitespace-normal'>
-            Stream <br /> In HD
+            {dictionary.stream} <br />
           </button>
           <button className='py-2 w-full bg-primary font-medium text-slate-800 rounded-md whitespace-normal'>
-            Download <br /> In HD
+            {dictionary.download} <br />
           </button>
         </div>
       </div>

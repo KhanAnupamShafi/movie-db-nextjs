@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getAllGenres } from "../[lang]/dynamic-import";
 import { renderStars } from "./Star";
-const MovieCard = ({ data, dictionary }) => {
-  const { title, backdrop_path, id, vote_average } = data || {};
+const MovieCard = async ({ data, dictionary }) => {
+  const { title, backdrop_path, id, vote_average, genre_ids } = data || {};
+  const genres = await getAllGenres(...genre_ids);
   return (
     <figure className='p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl'>
       <Image
@@ -15,7 +17,7 @@ const MovieCard = ({ data, dictionary }) => {
       />
       <figcaption className='pt-4'>
         <h3 className='text-xl mb-1'>{title}</h3>
-        <p className='text-[#575A6E] text-sm mb-2'>Action/Adventure/Sci-fi</p>
+        <p className='text-[#575A6E] text-sm mb-2'>{genres?.join("/")}</p>
         <div className='flex items-center space-x-1 mb-5'>
           {renderStars(vote_average)}
         </div>

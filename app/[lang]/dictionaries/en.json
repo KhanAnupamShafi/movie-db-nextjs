@@ -4,5 +4,11 @@
   "soon": "Coming Soon",
   "favourites": "Favourites",
   "later": "Watch Later",
-  "detail": "Details"
+  "detail": "Details",
+  "stream": "Stream In HD",
+  "download": "Download In HD",
+  "release": "Release Date",
+  "rating": "Average Vote",
+  "vote": "Vote Count",
+  "popularity": "Popularity"
 }
