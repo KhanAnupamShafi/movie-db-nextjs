@@ -1,8 +1,9 @@
-import MovieCard from "../components/MovieCard";
-import { getAllMovies } from "./dynamic-import";
+import MovieCard from "@/app/components/MovieCard";
+import { getAllMovies } from "../dynamic-import";
 
-export default async function Home() {
+export default async function MoviesPage() {
   const items = await getAllMovies();
+
   return (
     <>
       <div className='content'>

@@ -1,7 +1,7 @@
-const { default: Image } = require("next/image");
-
+import Image from "next/image";
+import Link from "next/link";
 const MovieCard = ({ data }) => {
-  const { title, vote_average, backdrop_path } = data || {};
+  const { title, backdrop_path, id } = data || {};
   return (
     <figure className='p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl'>
       <Image
@@ -22,12 +22,12 @@ const MovieCard = ({ data }) => {
           <Image src='/star.svg' width='14' height='14' alt='' />
           <Image src='/star.svg' width='14' height='14' alt='' />
         </div>
-        <a
+        <Link
           className='bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm'
-          href='./modal.html'>
+          href={`/movies/${id}`}>
           <Image src='/tag.svg' alt='' width='14' height='14' />
           <span>Details</span>
-        </a>
+        </Link>
       </figcaption>
     </figure>
   );

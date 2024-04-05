@@ -1,4 +1,4 @@
-import { getAllMovies, getMovieById } from "@/data";
+import { getAllMovies, getMovieById } from "@/app/[lang]/dynamic-import";
 import { NextResponse } from "next/server";
 
 export async function GET(_request, { params }) {
