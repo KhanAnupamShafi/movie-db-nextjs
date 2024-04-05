@@ -1,8 +1,8 @@
-export default function GalleryLayout({ children, modal }) {
-    return (
-        <>
-            {modal}
-            {children}
-        </>
-    );
+export default function MovieLayout({ children, modal }) {
+  return (
+    <>
+      {modal}
+      {children}
+    </>
+  );
 }

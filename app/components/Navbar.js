@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import ToggleLanguage from "./ToggleLanguage";
 
-const Navbar = () => {
+const Navbar = ({ lang }) => {
   return (
     <header>
       <nav className='container flex items-center justify-between space-x-10 py-6'>
@@ -10,6 +11,9 @@ const Navbar = () => {
         </Link>
 
         <ul className='flex items-center space-x-5'>
+          <li>
+            <ToggleLanguage lang={lang} />
+          </li>
           <li>
             <Link
               className='bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block'

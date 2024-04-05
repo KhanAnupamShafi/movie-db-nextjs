@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-const MovieCard = ({ data }) => {
-  const { title, backdrop_path, id } = data || {};
+import { renderStars } from "./Star";
+const MovieCard = ({ data, dictionary }) => {
+  const { title, backdrop_path, id, vote_average } = data || {};
   return (
     <figure className='p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl'>
       <Image
@@ -16,17 +17,13 @@ const MovieCard = ({ data }) => {
         <h3 className='text-xl mb-1'>{title}</h3>
         <p className='text-[#575A6E] text-sm mb-2'>Action/Adventure/Sci-fi</p>
         <div className='flex items-center space-x-1 mb-5'>
-          <Image src='/star.svg' width='14' height='14' alt='' />
-          <Image src='/star.svg' width='14' height='14' alt='' />
-          <Image src='/star.svg' width='14' height='14' alt='' />
-          <Image src='/star.svg' width='14' height='14' alt='' />
-          <Image src='/star.svg' width='14' height='14' alt='' />
+          {renderStars(vote_average)}
         </div>
         <Link
           className='bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm'
           href={`/movies/${id}`}>
           <Image src='/tag.svg' alt='' width='14' height='14' />
-          <span>Details</span>
+          <span>{dictionary.detail}</span>
         </Link>
       </figcaption>
     </figure>
