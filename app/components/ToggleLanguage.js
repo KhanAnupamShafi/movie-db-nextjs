@@ -27,7 +27,7 @@ const ToggleLanguage = ({ lang }) => {
   const handleLanguageClick = (entry) => {
     setActiveLanguage(entry.language);
     setIsHovered(false);
-    router.push(`/movies`, { locale: entry.code });
+    router.push(`/${entry.code}/movies`);
   };
 
   return (
